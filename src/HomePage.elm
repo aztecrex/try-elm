@@ -24,10 +24,11 @@ view model =
             [ text "Live reload with elm-live!" ]
         , p []
             [ text "x=", text (toString (first model)), text " y=", text (toString (second model))]
+        , div [] [ text "Drag Me"]
         ]
 
-subscriptions : Model -> Sub
-subscriptions = always 
+subscriptions : Model -> Sub Msg
+subscriptions = always (Mouse.moves (\pos -> MoveTo(pos.x, pos.y)))
 
 main : Program Never Model Msg
 main =
@@ -35,7 +36,7 @@ main =
         { init = ((0, 0), Cmd.none)
         , view = view
         , update = update
-        , subscriptions = always Sub.none
+        , subscriptions = subscriptions
         }
 
 
