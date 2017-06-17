@@ -24,7 +24,6 @@ view model =
             [ text "Live reload with elm-live!" ]
         , p []
             [ text "x=", text (toString (first model)), text " y=", text (toString (second model))]
-        , div [] [ text "Drag Me"]
         ]
 
 subscriptions : Model -> Sub Msg
